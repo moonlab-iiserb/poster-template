@@ -1,5 +1,7 @@
 # MoonLab Poster Template
 
+[![CI](https://github.com/moonlab-iiserb/poster-template/actions/workflows/ci.yml/badge.svg)](https://github.com/moonlab-iiserb/poster-template/actions/workflows/ci.yml)
+
 An academic poster template (A0 landscape) for the Multi-Robot Autonomy Lab,
 IISER Bhopal. Built on the Gemini [beamerposter] theme with a custom `iiserb`
 color theme, Fira Sans titles + Noto Sans body, and `authblk` author handling.

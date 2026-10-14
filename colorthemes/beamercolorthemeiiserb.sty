@@ -6,6 +6,7 @@
 %   Glaucous       #6A7FDB  rgb(106,127,219) -- secondary accent
 %   Bubblegum Pink #E76B74  rgb(231,107,116) -- sparing accent only
 %   Lemon Chiffon  #FBF2C0  rgb(251,242,192) -- sparing tint only
+%   Emerald        #51D87E  rgb(81,216,126)   -- data-series accent only
 %
 % Design intent (academic, not a circus ad):
 %   - Space Indigo dominates: headline background, titles, headings, bullets.
@@ -15,6 +16,8 @@
 %     nowhere as a large fill), so it draws the eye once, not everywhere.
 %   - Lemon Chiffon NEVER appears at full saturation: only as a pale
 %     cream tint (mixed with white) for the alert-block background.
+%   - Emerald is reserved for figures: a contrasting plot/bar series against
+%     indigo. Never large fills, never body text.
 %
 % Usage in main.tex:
 %   \usecolortheme{iiserb}
@@ -27,12 +30,14 @@
 \definecolor{glaucous}{HTML}{6A7FDB}
 \definecolor{bubblegum}{HTML}{E76B74}
 \definecolor{lemonchiffon}{HTML}{FBF2C0}
+\definecolor{emerald}{HTML}{51D87E}
 
 % Derived tints (keep saturated colors off large areas)
 \colorlet{glaucouslight}{glaucous!12!white}       % pale periwinkle for example blocks
 \colorlet{lemonlight}{lemonchiffon!35!white}      % pale cream for alert blocks
 \colorlet{pinkdark}{bubblegum!75!spaceindigo}     % readable darker pink, if needed for text
 \colorlet{glaucousdark}{glaucous!70!spaceindigo}  % darker glaucous for small text/links
+\colorlet{emeralddark}{emerald!70!spaceindigo}    % darker emerald for small text/links
 \definecolor{offwhite}{HTML}{FAFAFC}
 
 % ====================

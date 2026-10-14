@@ -113,8 +113,9 @@ text or shrink a figure in `sections/_index.tex` until the warning is gone.
 
 Read [palette.pdf](palette/palette.pdf), page 2 (2 minutes). The short version:
 indigo does the work, white dominates, glaucous is the only repeating accent,
-pink marks one thing, lemon stays in tints (except footer links). If you add a
-plot series, use `spaceindigo` vs `bubblegum` — never the raw `red`/`blue` defaults.
+pink marks one thing, lemon stays in tints (except footer links), emerald is
+for plot series only. If you add a plot series, use `spaceindigo` vs
+`bubblegum`/`emerald` — never the raw `red`/`blue` defaults.
 
 ## Step 7 (optional) — Change size, logos, fonts
 

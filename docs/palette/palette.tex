@@ -16,10 +16,12 @@
 \definecolor{glaucous}{HTML}{6A7FDB}
 \definecolor{bubblegum}{HTML}{E76B74}
 \definecolor{lemonchiffon}{HTML}{FBF2C0}
+\definecolor{emerald}{HTML}{51D87E}
 \colorlet{glaucouslight}{glaucous!12!white}
 \colorlet{lemonlight}{lemonchiffon!35!white}
 \colorlet{pinkdark}{bubblegum!75!spaceindigo}
 \colorlet{glaucousdark}{glaucous!70!spaceindigo}
+\colorlet{emeralddark}{emerald!70!spaceindigo}
 \definecolor{offwhite}{HTML}{FAFAFC}
 
 \newcommand{\swatch}[1]{\tikz{\fill[#1] (0,0) rectangle (2.4,1.1); \draw[black!25] (0,0) rectangle (2.4,1.1);}}
@@ -40,6 +42,7 @@
 \swatch{glaucous}     & \normalfont Glaucous      & 6A7FDB & 106, 127, 219 \\
 \swatch{bubblegum}    & \normalfont Bubblegum Pink& E76B74 & 231, 107, 116 \\
 \swatch{lemonchiffon} & \normalfont Lemon Chiffon & FBF2C0 & 251, 242, 192 \\
+\swatch{emerald}      & \normalfont Emerald       & 51D87E & 81, 216, 126 \\
 \bottomrule
 \end{tabular}
 
@@ -52,6 +55,7 @@
 \swatch{lemonlight}    & \normalfont lemonlight    & \texttt{lemonchiffon!35!white} (alert-block fill) \\
 \swatch{pinkdark}      & \normalfont pinkdark      & \texttt{bubblegum!75!spaceindigo} (pink text, if ever needed) \\
 \swatch{glaucousdark}  & \normalfont glaucousdark  & \texttt{glaucous!70!spaceindigo} (links, small text) \\
+\swatch{emeralddark}   & \normalfont emeralddark   & \texttt{emerald!70!spaceindigo} (emerald text, if ever needed) \\
 \swatch{offwhite}      & \normalfont offwhite      & \texttt{FAFAFC} (reserved) \\
 \bottomrule
 \end{tabular}
@@ -61,7 +65,7 @@
 
 \newpage
 \section*{How to use the palette (keep it cohesive)}
-Aim for roughly: \textbf{white 60\% / indigo 25\% / glaucous 10\% / pink + lemon under 5\%}.
+Aim for roughly: \textbf{white 60\% / indigo 25\% / glaucous 10\% / pink + lemon + emerald under 5\%}.
 
 \begin{description}
 \item[Space Indigo — the workhorse.] Headline bar, block titles, headings,
@@ -77,14 +81,19 @@ body text on white (use \texttt{pinkdark} if pink text is unavoidable).
 \item[Lemon Chiffon — tint only.] Alert-block fill as a 35\% tint; never
 lines or text on white — it is too light to read. The one exception is
 footer links on the dark indigo bar, where full-strength lemon is readable.
+\item[Emerald — figures only.] A contrasting data series against indigo
+(e.g.\ pink vs.\ emerald, or the two blues vs.\ one accent). Never large
+fills, never body text on white (use \texttt{emeralddark} if emerald text is
+unavoidable).
 \end{description}
 
 \subsection*{Do}
 \begin{itemize}
-\item Pair one dark series with one accent series per figure
-(\texttt{spaceindigo} vs \texttt{bubblegum}, or \texttt{spaceindigo} vs
-\texttt{glaucousdark}); use \texttt{thick} / \texttt{very thick} lines —
-posters are read from metres away.
+\item Pair one dark series with accent series per figure
+(\texttt{spaceindigo} vs \texttt{bubblegum}, \texttt{spaceindigo} vs
+\texttt{emerald}, or the two blues \texttt{spaceindigo} + \texttt{glaucousdark}
+against one accent); use \texttt{thick} / \texttt{ultra thick} lines and a
+legend — posters are read from metres away.
 \item Let the single pink element mark the single most important takeaway.
 \item Keep tables black-on-white with \texttt{booktabs} rules.
 \end{itemize}
@@ -93,7 +102,8 @@ posters are read from metres away.
 \begin{itemize}
 \item Introduce extra colors (no pure \texttt{red}/\texttt{blue}/\texttt{green}
 plot defaults — the template's placeholders already use theme colors).
-\item Use more than 2--3 series per plot, or pink and lemon in the same figure.
+\item Use more than 4 series per plot (and always add a legend beyond 2
+series), or pink and lemon in the same figure.
 \item Put lemon text on white, or white text anywhere except the indigo bars.
 \end{itemize}
 \end{document}

@@ -33,7 +33,7 @@
 
   \begin{block}{Poster palette}
 
-    The \texttt{iiserb} theme in four swatches — usage guidance in
+    The \texttt{iiserb} theme in five swatches — usage guidance in
     \texttt{docs/palette/palette.pdf}.
 
     \begin{center}
@@ -42,10 +42,11 @@
           0/spaceindigo/Space Indigo/2B2D42,
           1/glaucous/Glaucous/6A7FDB,
           2/bubblegum/Bubblegum Pink/E76B74,
-          3/lemonchiffon/Lemon Chiffon/FBF2C0} {
-          \fill[\swatchcolor] ({\k*8},0) rectangle ({\k*8+7},3.5);
-          \draw[spaceindigo!30!white] ({\k*8},0) rectangle ({\k*8+7},3.5);
-          \node[below, text width=7cm, align=center] at ({\k*8+3.5},-0.2) {\swatchname\\\texttt{\swatchhex}};
+          3/lemonchiffon/Lemon Chiffon/FBF2C0,
+          4/emerald/Emerald/51D87E} {
+          \fill[\swatchcolor] ({\k*7},0) rectangle ({\k*7+6.2},3.5);
+          \draw[spaceindigo!30!white] ({\k*7},0) rectangle ({\k*7+6.2},3.5);
+          \node[below, text width=6.2cm, align=center] at ({\k*7+3.1},-0.2) {\swatchname\\\texttt{\swatchhex}};
         }
       \end{tikzpicture}
     \end{center}
@@ -123,17 +124,66 @@
       \begin{tikzpicture}
         \begin{axis}[
             scale only axis,
+            width=0.3\colwidth,
+            height=0.24\colwidth,
             no markers,
             domain=0:2*pi,
             samples=100,
             axis lines=center,
             axis line style={spaceindigo, thick},
-            ticks=none]
-          \addplot[spaceindigo, very thick] {sin(deg(x))};
-          \addplot[bubblegum, very thick] {cos(deg(x))};
+            ticks=none,
+            legend pos=north east,
+            legend style={font=\small, fill=white, draw=spaceindigo, thick}]
+          \addplot[spaceindigo, ultra thick] {sin(deg(x))};
+          \addplot[glaucousdark, ultra thick] {cos(deg(x))};
+          \addplot[bubblegum, ultra thick] {sin(deg(2*x))};
+          \addplot[emerald, ultra thick] {cos(deg(2*x))};
+          \legend{$\sin(x)$,$\cos(x)$,$\sin(2x)$,$\cos(2x)$}
         \end{axis}
       \end{tikzpicture}
-      \caption{Another figure caption.}
+      \hfill
+      \begin{tikzpicture}
+        \begin{axis}[
+            ybar,
+            width=0.3\colwidth,
+            height=0.24\colwidth,
+            bar width=1.4cm,
+            symbolic x coords={Indigo,Glaucous,Bubblegum,Emerald},
+            xtick=data,
+            ticks=none,
+            axis lines*=left,
+            axis line style={spaceindigo, thick},
+            ymin=0, ymax=10]
+          \addplot[bar shift=0pt, fill=spaceindigo, draw=spaceindigo!60!black] coordinates {(Indigo,8)};
+          \addplot[bar shift=0pt, fill=glaucous, draw=glaucous!60!black] coordinates {(Glaucous,6)};
+          \addplot[bar shift=0pt, fill=bubblegum, draw=bubblegum!60!black] coordinates {(Bubblegum,7)};
+          \addplot[bar shift=0pt, fill=emerald, draw=emerald!60!black] coordinates {(Emerald,5)};
+        \end{axis}
+      \end{tikzpicture}
+      \hfill
+      \begin{tikzpicture}
+        \begin{axis}[
+            scale only axis,
+            width=0.3\colwidth,
+            height=0.24\colwidth,
+            axis lines=left,
+            axis line style={spaceindigo, thick},
+            ticks=none,
+            xmin=0, xmax=10,
+            ymin=0, ymax=10]
+          \addplot[only marks, mark=*, mark size=7pt, fill=spaceindigo, draw=spaceindigo!60!black, thick]
+            coordinates {(1,2)(2,3)(3,3.5)(4,5)(5,5.5)(6,7)};
+          \addplot[only marks, mark=square*, mark size=7pt, fill=glaucous, draw=glaucous!60!black, thick]
+            coordinates {(1,7)(2,6)(3,6.5)(5,4)(6,3)(7,2.5)};
+          \addplot[only marks, mark=triangle*, mark size=8pt, fill=bubblegum, draw=bubblegum!60!black, thick]
+            coordinates {(2,8)(4,7.5)(5,8.5)(7,7)(8,8)};
+          \addplot[only marks, mark=diamond*, mark size=8pt, fill=emerald, draw=emerald!60!black, thick]
+            coordinates {(1,4)(3,5)(4,4)(6,6)(8,5)(9,6)};
+          \addplot[only marks, mark=pentagon*, mark size=8pt, fill=lemonchiffon, draw=spaceindigo, thick]
+            coordinates {(2,1)(4,2)(6,1.5)(8,2.5)};
+        \end{axis}
+      \end{tikzpicture}
+      \caption{Line, bar, and scatter plots in theme colors.}
     \end{figure}
 
     In in mi consequat, tristique felis at, dapibus lacus. Fusce sed eleifend

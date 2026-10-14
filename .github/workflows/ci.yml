@@ -8,15 +8,32 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: sudo apt-get update -y
-      - run: >-
-          sudo apt-get install -y
-          texlive-latex-extra
-          texlive-fonts-recommended
-          texlive-fonts-extra
-          lmodern
-          texlive-luatex
-          texlive-xetex
-          latexmk
-      - uses: actions/checkout@v2
-      - run: make main.pdf
+      - uses: actions/checkout@v4
+
+      # Prebuilt full TeX Live image (xu-cheng/latex-action) — nothing is
+      # installed at build time. latexmk reads the repo .latexmkrc, which
+      # selects the LuaLaTeX engine and the colorthemes search path.
+      # -pdflua (not -pdf) keeps LuaLaTeX mode; nonstopmode keeps CI
+      # from hanging on the interactive error prompt.
+      - name: Build poster
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          compiler: latexmk
+          args: -pdflua -file-line-error -interaction=nonstopmode
+
+      - name: Build palette sheet
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: docs/palette
+          root_file: palette.tex
+          compiler: latexmk
+          args: -pdf -file-line-error -interaction=nonstopmode
+
+      - name: Upload PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: poster
+          path: |
+            main.pdf
+            docs/palette/palette.pdf

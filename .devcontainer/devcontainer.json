@@ -1,0 +1,18 @@
+{
+  "name": "MoonLab Poster (LaTeX)",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "James-Yu.latex-workshop"
+      ],
+      "settings": {
+        "latex-workshop.view.pdf.viewer": "tab"
+      }
+    }
+  },
+  "postCreateCommand": "lualatex --version && latexmk -version",
+  "remoteUser": "vscode"
+}

@@ -31,17 +31,31 @@
 
   \end{block}
 
+  \begin{block}{Poster palette}
+
+    The \texttt{iiserb} theme in four swatches — usage guidance in
+    \texttt{docs/palette/palette.pdf}.
+
+    \begin{center}
+      \begin{tikzpicture}[font=\small]
+        \foreach \k/\swatchcolor/\swatchname/\swatchhex in {
+          0/spaceindigo/Space Indigo/2B2D42,
+          1/glaucous/Glaucous/6A7FDB,
+          2/bubblegum/Bubblegum Pink/E76B74,
+          3/lemonchiffon/Lemon Chiffon/FBF2C0} {
+          \fill[\swatchcolor] ({\k*8},0) rectangle ({\k*8+7},3.5);
+          \draw[spaceindigo!30!white] ({\k*8},0) rectangle ({\k*8+7},3.5);
+          \node[below, text width=7cm, align=center] at ({\k*8+3.5},-0.2) {\swatchname\\\texttt{\swatchhex}};
+        }
+      \end{tikzpicture}
+    \end{center}
+
+  \end{block}
+
   \begin{block}{A block containing a list}
 
     Curabitur condimentum sem id semper vulputate. Nam lobortis ultrices
-    iaculis. Maecenas bibendum, sem vel vehicula tempus, nisi tortor eleifend
-    tellus, at molestie mi libero ut turpis. Duis finibus finibus sapien, ut
-    mollis odio malesuada a. Aenean ut ex augue. Quisque vulputate scelerisque
-    eros quis bibendum. Nunc accumsan nisl a tincidunt dapibus. Nulla ut
-    vulputate elit, quis posuere tellus. Aliquam euismod nulla ipsum, eu
-    blandit metus fermentum sed. Proin ultrices sodales nulla eu molestie.
-    Nullam mi odio, blandit nec dui lacinia, accumsan facilisis nunc. Maecenas
-    vel est et magna dapibus cursus id in ante.
+    iaculis. Maecenas bibendum, sem vel vehicula tempus.
 
     \begin{itemize}
       \item \textbf{Mauris tempor} risus nulla, sed ornare
@@ -59,11 +73,6 @@
 
     This block catches your eye, so \textbf{important stuff} should probably go
     here.
-
-    Curabitur eu libero vehicula, cursus est fringilla, luctus est. Morbi
-    consectetur mauris quam, at finibus elit auctor ac. Aliquam erat volutpat.
-    Aenean at nisl ut ex ullamcorper eleifend et eu augue. Aenean quis velit
-    tristique odio convallis ultrices a ac odio.
 
     \begin{itemize}
       \item \textbf{Fusce dapibus tellus} vel tellus semper finibus. In
@@ -86,12 +95,7 @@
   \begin{block}{A block containing an enumerated list}
 
     Vivamus congue volutpat elit non semper. Praesent molestie nec erat ac
-    interdum. In quis suscipit erat. \textbf{Phasellus mauris felis, molestie
-    ac pharetra quis}, tempus nec ante. Donec finibus ante vel purus mollis
-    fermentum. Sed felis mi, pharetra eget nibh a, feugiat eleifend dolor. Nam
-    mollis condimentum purus quis sodales. Nullam eu felis eu nulla eleifend
-    bibendum nec eu lorem. Vivamus felis velit, volutpat ut facilisis ac,
-    commodo in metus.
+    interdum. In quis suscipit erat.
 
     \begin{enumerate}
       \item \textbf{Morbi mauris purus}, egestas at vehicula et, convallis
@@ -181,9 +185,7 @@
     \heading{Another heading inside a block}
 
     Sed augue erat, scelerisque a purus ultricies, placerat porttitor neque.
-    Donec $P(y \mid x)$ fermentum consectetur $\nabla_x P(y \mid x)$ sapien
-    sagittis egestas. Duis eget leo euismod nunc viverra imperdiet nec id
-    justo.
+    Duis eget leo euismod nunc viverra imperdiet nec id justo.
 
   \end{exampleblock}
 
@@ -208,8 +210,7 @@
       \caption{A table caption.}
     \end{table}
 
-    Donec quis posuere ligula. Nunc feugiat elit a mi malesuada consequat. Sed
-    imperdiet augue ac nibh aliquet tristique.
+    Donec quis posuere ligula. Nunc feugiat elit a mi malesuada consequat.
 
     \begin{enumerate}
       \item \textbf{Praesent vel enim} eget urna auctor accumsan. Ut volutpat, erat sed vulputate porta, metus dolor consectetur eros, eget vestibulum purus nulla hendrerit ex.

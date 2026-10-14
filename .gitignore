@@ -1,5 +1,7 @@
 # output
 *.pdf
+# ...except the committed palette sheet
+!docs/palette/palette.pdf
 
 # intermediate files
 *.aux
@@ -12,3 +14,8 @@
 *.toc
 *.fdb_latexmk
 *.fls
+*.synctex.gz
+
+# local build output directory (latexmk -outdir=build, editors, etc.)
+# stays out of commits and pushes regardless of file types inside
+build/

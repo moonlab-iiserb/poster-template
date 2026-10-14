@@ -21,9 +21,9 @@ If you're looking for a beamer presentation theme, take a look at [Auriga].
 
 1. Copy the files in this repository (or clone the repository)
 
-1. In `poster.tex`, set up your paper size, column layout, and scale the content as necessary
+1. In `main.tex`, set up your paper size, column layout, and scale the content as necessary
 
-1. Make a copy of `beamercolorthemegemini.sty`, update the `\usecolortheme` line in `poster.tex`, and theme the poster to your liking (optional, but highly recommended)
+1. The active color theme is `iiserb` (`colorthemes/beamercolorthemeiiserb.sty`), selected via the `\usecolortheme` line in `main.tex`
 
 1. Run `make` to build your poster
 

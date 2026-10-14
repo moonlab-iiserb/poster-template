@@ -1,0 +1,90 @@
+% Gemini color theme: iiserb
+% IISER Bhopal / MoonLab poster theme.
+%
+% Palette (provided):
+%   Space Indigo   #2B2D42  rgb(43,45,66)    -- primary, authoritative dark
+%   Glaucous       #6A7FDB  rgb(106,127,219) -- secondary accent
+%   Bubblegum Pink #E76B74  rgb(231,107,116) -- sparing accent only
+%   Lemon Chiffon  #FBF2C0  rgb(251,242,192) -- sparing tint only
+%
+% Design intent (academic, not a circus ad):
+%   - Space Indigo dominates: headline background, titles, headings, bullets.
+%   - White dominates body areas for print readability.
+%   - Glaucous is the only recurring accent: headline rule + block separators.
+%   - Bubblegum Pink appears ONLY as the thin alert-block separator (and
+%     nowhere as a large fill), so it draws the eye once, not everywhere.
+%   - Lemon Chiffon NEVER appears at full saturation: only as a pale
+%     cream tint (mixed with white) for the alert-block background.
+%
+% Usage in main.tex:
+%   \usecolortheme{iiserb}
+
+% ====================
+% Definitions
+% ====================
+
+\definecolor{spaceindigo}{HTML}{2B2D42}
+\definecolor{glaucous}{HTML}{6A7FDB}
+\definecolor{bubblegum}{HTML}{E76B74}
+\definecolor{lemonchiffon}{HTML}{FBF2C0}
+
+% Derived tints (keep saturated colors off large areas)
+\colorlet{glaucouslight}{glaucous!12!white}       % pale periwinkle for example blocks
+\colorlet{lemonlight}{lemonchiffon!35!white}      % pale cream for alert blocks
+\colorlet{pinkdark}{bubblegum!75!spaceindigo}     % readable darker pink, if needed for text
+\colorlet{glaucousdark}{glaucous!70!spaceindigo}  % darker glaucous for small text/links
+\definecolor{offwhite}{HTML}{FAFAFC}
+
+% ====================
+% Theme
+% ====================
+
+% Basic colors
+\setbeamercolor{palette primary}{fg=black,bg=white}
+\setbeamercolor{palette secondary}{fg=black,bg=white}
+\setbeamercolor{palette tertiary}{bg=spaceindigo,fg=white}
+\setbeamercolor{palette quaternary}{fg=black,bg=white}
+\setbeamercolor{structure}{fg=spaceindigo}
+
+% Headline: dark indigo bar, white text, single glaucous rule
+\setbeamercolor{headline}{fg=white,bg=spaceindigo}
+\setbeamercolor{headline title}{fg=white,bg=spaceindigo}
+\setbeamercolor{headline author}{fg=white,bg=spaceindigo}
+\setbeamercolor{headline institute}{fg=white!88!lemonchiffon,bg=spaceindigo}
+\setbeamercolor{headline rule}{bg=glaucous}
+
+% Block: calm white body, indigo title, thin glaucous separator
+\setbeamercolor{block title}{fg=spaceindigo,bg=white}
+\setbeamercolor{block separator}{bg=glaucous}
+\setbeamercolor{block body}{fg=black,bg=white}
+
+% Alert Block: pale cream body so it stands out once; pink ONLY in the rule
+\setbeamercolor{block title alerted}{fg=spaceindigo,bg=lemonlight}
+\setbeamercolor{block separator alerted}{bg=bubblegum}
+\setbeamercolor{block body alerted}{fg=black,bg=lemonlight}
+
+% Example Block: pale periwinkle body; glaucous rule
+\setbeamercolor{block title example}{fg=spaceindigo,bg=glaucouslight}
+\setbeamercolor{block separator example}{bg=glaucous}
+\setbeamercolor{block body example}{fg=black,bg=glaucouslight}
+
+% Heading
+\setbeamercolor{heading}{fg=spaceindigo}
+
+% Itemize / enumerate
+\setbeamercolor{item}{fg=spaceindigo}
+\setbeamercolor{subitem}{fg=spaceindigo}
+\setbeamercolor{subsubitem}{fg=spaceindigo}
+\setbeamercolor{enumerate item}{fg=spaceindigo}
+\setbeamercolor{enumerate subitem}{fg=spaceindigo}
+
+% Caption / bibliography
+\setbeamercolor{caption}{fg=spaceindigo!85!black}
+\setbeamercolor{bibliography item}{fg=black}
+\setbeamercolor{bibliography entry author}{fg=black}
+\setbeamercolor{bibliography entry title}{fg=black}
+\setbeamercolor{bibliography entry location}{fg=black}
+\setbeamercolor{bibliography entry note}{fg=black}
+
+% Hyperlinks: keep readable on white; avoid bright pink for body links
+\hypersetup{colorlinks=true,linkcolor=spaceindigo,citecolor=glaucousdark,urlcolor=glaucousdark}

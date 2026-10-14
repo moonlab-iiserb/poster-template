@@ -1,9 +1,9 @@
 .PHONY: main clean FORCE
 
-main: poster.pdf
+main: main.pdf
 
-poster.pdf: FORCE
-	latexmk -pdflatex='lualatex -interaction nonstopmode' -pdf poster.tex
+main.pdf: FORCE
+	latexmk -pdflua main.tex
 
 clean:
-	latexmk -pdf -C
+	latexmk -C

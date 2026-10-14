@@ -1,0 +1,91 @@
+% Gemini theme
+% https://github.com/anishathalye/gemini
+%
+% MoonLab / IISER Bhopal setup:
+%   - Color theme : \usecolortheme{iiserb}
+%     (colorthemes/beamercolorthemeiiserb.sty)
+%   - Fonts       : Fira Sans (titles) + Noto Sans (body), see beamerthemegemini.sty
+%   - Metadata    : edit meta/info.tex (title, lab, institute, conference,
+%                   website, email) and meta/authors.tex (authblk authors).
+%   - Body        : edit sections/_index.tex only.
+
+\documentclass[final]{beamer}
+
+% ====================
+% Packages
+% ====================
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[size=custom,width=118.9,height=84.1,scale=1.0]{beamerposter}
+\usetheme{gemini}
+\usecolortheme{iiserb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
+\usepackage{anyfontsize}
+
+% ====================
+% Lengths
+% ====================
+
+% If you have N columns, choose \sepwidth and \colwidth such that
+% (N+1)*\sepwidth + N*\colwidth = \paperwidth
+\newlength{\sepwidth}
+\newlength{\colwidth}
+\setlength{\sepwidth}{0.025\paperwidth}
+\setlength{\colwidth}{0.3\paperwidth}
+
+\newcommand{\separatorcolumn}{\begin{column}{\sepwidth}\end{column}}
+
+% ====================
+% Metadata (variables only; edit the meta/ files, not here)
+% ====================
+
+\input{meta/info.tex}
+
+\title{\posterTitle}
+
+% Authors/affiliations use authblk: meta/authors.tex holds plain
+% \author[<n>]{...} / \affil[<n>]{...} lines (any number of authors).
+\input{meta/authors.tex}
+
+% ====================
+% Footer (optional)
+% ====================
+
+\footercontent{%
+  % Yellowish links: footer sits on the dark indigo bar, so the
+  % full-strength lemonchiffon from the theme stays readable.
+  \hypersetup{urlcolor=lemonchiffon}%
+  \href{\posterWebsiteURL}{\posterWebsiteDisplay} \hfill
+  \posterConference \hfill
+  \href{mailto:\posterEmail}{\posterEmail}}
+% (can be left out to remove footer)
+
+% ====================
+% Logos
+% ====================
+
+% IISER Bhopal crest (square, 1200x1200 with transparency) on the left,
+% MoonLab wordmark (wide, 752x157) on the right. Deliberately different
+% heights so their *visual* weights match on the dark headline bar:
+% equal heights would make the square crest dominate and the wide
+% wordmark look like a thin strip. Both files have transparent
+% backgrounds; moonlab-white is the white variant for the dark bar.
+\logoleft{\includegraphics[height=7.5cm]{figures/logos/iiserb-colorized.png}}
+\logoright{\includegraphics[height=3.2cm]{figures/logos/moonlab-white.png}}
+
+% ====================
+% Body
+% ====================
+
+\begin{document}
+
+\begin{frame}[t]
+	\input{sections/_index.tex}
+\end{frame}
+
+\end{document}

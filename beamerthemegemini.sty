@@ -10,31 +10,72 @@
 \RequirePackage{changepage}
 \RequirePackage{fontspec}
 \RequirePackage{calc}
+\RequirePackage{authblk}
 
 % ====================
 % Fonts
 % ====================
+%
+% Titles: Fira Sans (from TeX Live, loaded by family name; resolves to the
+% texmf OTFs, e.g. FiraSans-Regular.otf). Bold/Italic auto-detected.
+% Body: Noto Sans (system/teXmf). Explicit style mapping avoids the variable
+% font's Black weight being picked for \textbf. If you prefer Lato (the
+% original Gemini body font, also installed here), swap the \setsansfont
+% block with the commented Lato block below. Nunito Sans is not installed,
+% so Noto Sans is used as the requested humanist sans.
 
-\newfontfamily\Raleway[Ligatures=TeX]{Raleway}
-\newfontfamily\Lato[Ligatures=TeX]{Lato}
+\newfontfamily\PosterTitleFont[Ligatures=TeX]{FiraSans}
+\newfontfamily\PosterBodyFont[Ligatures=TeX,
+  UprightFont=* Regular,
+  ItalicFont=* Italic,
+  BoldFont=* Bold,
+  BoldItalicFont=* Bold Italic,
+]{Noto Sans}
 
 \usefonttheme{professionalfonts}
 
-\setsansfont{Lato}[
-  UprightFont=*-Light,
-  ItalicFont=*-LightItalic,
-  BoldFont=*-Regular,
-  BoldItalicFont=*-Italic
+\setsansfont{Noto Sans}[
+  Ligatures=TeX,
+  UprightFont=* Regular,
+  ItalicFont=* Italic,
+  BoldFont=* Bold,
+  BoldItalicFont=* Bold Italic
 ]
+% Lato alternative (uncomment to use Lato for body instead of Noto Sans):
+% \setsansfont{Lato}[
+%   Ligatures=TeX,
+%   UprightFont=*-Regular,
+%   ItalicFont=*-Italic,
+%   BoldFont=*-Bold,
+%   BoldItalicFont=*-BoldItalic
+% ]
 
-\setbeamerfont{headline}{family=\Raleway}
+\setbeamerfont{headline}{family=\PosterTitleFont}
 \setbeamerfont{headline title}{size=\Huge,series=\bfseries}
 \setbeamerfont{headline author}{size=\Large}
 \setbeamerfont{headline institute}{size=\normalsize}
-\setbeamerfont{block title}{family=\Raleway,size=\large,series=\bfseries}
-\setbeamerfont{heading}{family=\Lato,series=\bfseries}
+\setbeamerfont{block title}{family=\PosterTitleFont,size=\large,series=\bfseries}
+\setbeamerfont{heading}{family=\PosterBodyFont,series=\bfseries}
 \setbeamerfont{caption}{size=\small}
-\setbeamerfont{footline}{family=\Raleway,size=\normalsize}
+\setbeamerfont{footline}{family=\PosterTitleFont,size=\normalsize}
+
+% ====================
+% Authors (authblk)
+% ====================
+%
+% Authors/affiliations are defined with authblk commands in
+% meta/authors.tex (\author[<n>]{...} / \affil[<n>]{...}), so any number
+% of authors works. The headline below prints authblk's lists; beamer's
+% \insertauthor/\insertinstitute remain as fallback when no \author or
+% \affil was given.
+% \Authfont/\Affilfont must not reset to \normalfont, otherwise they
+% would wipe the headline fonts set around \AB@authlist/\AB@affillist.
+\renewcommand*{\Authfont}{\usebeamerfont{headline author}\usebeamercolor[fg]{headline author}}
+\renewcommand*{\Affilfont}{\usebeamerfont{headline institute}\usebeamercolor[fg]{headline institute}}
+\setlength{\affilsep}{1ex}
+\renewcommand*{\Authsep}{, }
+\renewcommand*{\Authand}{, }
+\renewcommand*{\Authands}{, }
 
 % ====================
 % Macros
@@ -137,11 +178,19 @@
         \ifx \inserttitle \empty \else
         {\usebeamerfont{headline title}\usebeamercolor[fg]{headline title}\inserttitle\\[0.5ex]}
         \fi
-        \ifx \beamer@shortauthor \empty \else
-        {\usebeamerfont{headline author}\usebeamercolor[fg]{headline author}\insertauthor\\[1ex]}
+        \ifx \AB@authlist \@empty
+          \ifx \beamer@shortauthor \empty \else
+          {\usebeamerfont{headline author}\usebeamercolor[fg]{headline author}\insertauthor\\[1ex]}
+          \fi
+        \else
+        {\AB@authlist\\[1ex]}
         \fi
-        \ifx \insertinstitute \empty \else
-        {\usebeamerfont{headline institute}\usebeamercolor[fg]{headline institute}\insertinstitute\\[1ex]}
+        \ifx \AB@affillist \@empty
+          \ifx \insertinstitute \empty \else
+          {\usebeamerfont{headline institute}\usebeamercolor[fg]{headline institute}\insertinstitute\\[1ex]}
+          \fi
+        \else
+        {\AB@affillist\\[1ex]}
         \fi
       \end{column}
       \begin{column}{\maxlogowidth}

@@ -17,12 +17,16 @@ sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended \
 
 ### Option B: Docker devcontainer (recommended if you have no TeX installation)
 
-You need Docker, VS Code, and VS Code's **Dev Containers** extension. The
-container recipe is in [.devcontainer/](../.devcontainer/) (TeX Live packages
-mirrored from CI, LaTeX Workshop extension preinstalled).
+You need Docker, VS Code, and VS Code's **Dev Containers** extension. Full
+steps: [DEVCONTAINER](DEVCONTAINER.md).
 
 > The devcontainer is currently **untested** — if the build breaks inside it,
 > please note down the error and report it.
+
+### Option C: Overleaf (no installation at all)
+
+See [OVERLEAF](OVERLEAF.md): upload a zip, set Compiler → LuaLaTeX and Main
+document → `main.tex`, recompile. The steps below apply unchanged once it builds.
 
 ## Step 1 — Get the template and verify the build
 
@@ -33,7 +37,7 @@ make main.pdf
 ```
 
 Open `main.pdf`. You should see the placeholder poster with the dark indigo
-headline bar. If the build fails, see [Troubleshooting](../README.md#troubleshooting).
+headline bar. If the build fails, see [TROUBLESHOOTING](TROUBLESHOOTING.md).
 
 - **Devcontainer path:** open the `poster-template` folder in VS Code,
   press `Ctrl+Shift+P`, run **Dev Containers: Reopen in Container**, wait for
@@ -114,13 +118,9 @@ plot series, use `spaceindigo` vs `bubblegum` — never the raw `red`/`blue` def
 
 ## Step 7 (optional) — Change size, logos, fonts
 
-- **Size:** `main.tex`, the `beamerposter` options (`width=118.9,height=84.1`
-  = A0 landscape). After resizing, rebalance `\sepwidth` / `\colwidth`.
-- **Logos:** `\logoleft` / `\logoright` in `main.tex`; keep the white MoonLab
-  variant on the dark bar, and keep differing heights (square crest vs wide
-  wordmark).
-- **Fonts:** Fira Sans (titles) + Noto Sans (body) are set in
-  `beamerthemegemini.sty`; a commented Lato alternative is included.
+See [CUSTOMIZING](CUSTOMIZING.md): `beamerposter` size options in `main.tex`,
+`\logoleft` / `\logoright` logo heights, and the font setup in
+`beamerthemegemini.sty`.
 
 ## Done — printing checklist
 
